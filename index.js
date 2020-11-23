@@ -8,7 +8,7 @@ const app = express();
 // sometimes you use several express apps in a project.
 
 app.get("/", (req, res) => {
-  res.send({ hi: "there" });
+  res.send({ hi: "there - we changed something", bye: "buddy" });
 });
 
 const PORT = process.env.PORT || 5000;
