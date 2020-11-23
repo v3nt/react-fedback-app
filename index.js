@@ -4,12 +4,20 @@ const express = require("express");
 // ES2015 modules.
 // import express from 'express' //
 
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const keys = require("./config/keys");
+
 const app = express();
 // sometimes you use several express apps in a project.
 
-app.get("/", (req, res) => {
-  res.send({ hi: "there - we changed something", bye: "buddy" });
-});
+passport.use(
+  new GoogleStrategy({
+    clientID: keys.googleClientID,
+    clientSecret: keys.googleClientSecret,
+  })
+);
 
 const PORT = process.env.PORT || 5000;
+//
 app.listen(PORT);
