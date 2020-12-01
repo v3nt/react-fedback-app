@@ -1,9 +1,8 @@
 // common js module used for this project
 const express = require("express");
-// ES2015 modules :
+// ES2015+ modules :
 // import express from 'express' //
 //
-// const authRoutes = require("./routes/authRoutes"); // not needed as using require(...)(app) directly below.
 
 const cookieSession = require("cookie-session");
 const passport = require("passport");
@@ -28,8 +27,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // authRoutes(app);
-// or
-require("./routes/authRoutes")(app); // app ius passed into arrow function in aR.js
+require("./routes/authRoutes")(app);
+// app is passed into arrow function in aR.js, // const authRoutes = require("./routes/authRoutes");
+// not needed as using require(...)(app).
 
 //
 const PORT = process.env.PORT || 5000;
