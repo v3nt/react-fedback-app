@@ -1,9 +1,22 @@
 const passport = require("passport");
+// passport is a service to our app.
+
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
 const User = mongoose.model("users");
-// passport is a service to our app.
+
+passport.serializeUser((user, done) => {
+  done(null, user.id); // _id from mongoDB record or document. This is the token for the cookie
+});
+
+passport.deserializeUser((id, done) => {
+  // tghis is an async request that will need a promise
+  User.findById(id).then((user) => {
+    done(null, user);
+  });
+});
+
 passport.use(
   new GoogleStrategy(
     {

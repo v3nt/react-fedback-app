@@ -10,4 +10,9 @@ module.exports = (app) => {
   );
   // 2nd route handler
   app.get("/auth/google/callback", passport.authenticate("google"));
+
+  //for authentication. So when someoen hist `/api/current_user` it will run this function.
+  app.get("/api/current_user", (req, res) => {
+    res.send(req.user);
+  });
 };
