@@ -5,6 +5,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
+// styles
+import materializeCSS from "materialize-css/dist/css/materialize.min.css";
+
 // Dummy comps
 const Dashboard = () => <h2>Dash</h2>;
 const SurveyNew = () => <h2>Survey new</h2>;
