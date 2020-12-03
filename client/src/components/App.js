@@ -8,16 +8,17 @@ import Footer from "./Footer";
 // Dummy comps
 const Dashboard = () => <h2>Dash</h2>;
 const SurveyNew = () => <h2>Survey new</h2>;
-const Landing = () => <p>Landin</p>;
+const Landing = () => <h2>Landing</h2>;
 
 const App = () => {
   return (
     <div>
       <Header />
-      <p>Hi there</p>
-      <Landing />
-      <Dashboard />
-      <SurveyNew />
+      <BrowserRouter>
+        <Route path="/" exact component={Landing} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/survey/new" component={SurveyNew} />
+      </BrowserRouter>
       <Footer />
     </div>
   );
