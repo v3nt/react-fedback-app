@@ -8,6 +8,7 @@ import Footer from "./Footer";
 // Dummy comps
 const Dashboard = () => <h2>Dash</h2>;
 const SurveyNew = () => <h2>Survey new</h2>;
+const SurveyList = () => <h2>Survey List</h2>;
 const Landing = () => <h2>Landing</h2>;
 
 const App = () => {
@@ -17,7 +18,8 @@ const App = () => {
       <BrowserRouter>
         <Route path="/" exact component={Landing} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/survey/new" component={SurveyNew} />
+        <Route exact path="/surveys" component={SurveyList} />
+        <Route path="/surveys/new" component={SurveyNew} />
       </BrowserRouter>
       <Footer />
     </div>
