@@ -7,6 +7,9 @@ const express = require("express");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 
+//express does not parse the result so use `npm i body-parser`
+const bodyParser = require("body-parser");
+
 const keys = require("./config/keys");
 require("./models/User");
 require("./services/passport"); // required but ref never used as nothing returned
@@ -15,6 +18,8 @@ mongoose = require("mongoose");
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+
+app.use(bodyParser.json());
 
 // tell express to use cookies in our app, D * H * M * S * MS
 app.use(
@@ -31,7 +36,9 @@ require("./routes/authRoutes")(app);
 // app is passed into arrow function in aR.js, // const authRoutes = require("./routes/authRoutes");
 // not needed as using require(...)(app).
 
+require("./routes/billingRoutes")(app);
+
 //
 const PORT = process.env.PORT || 5000;
-console.log(PORT);
+// console.log(PORT);
 app.listen(PORT);
