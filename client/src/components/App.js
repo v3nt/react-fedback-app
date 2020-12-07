@@ -5,6 +5,7 @@ import * as actions from "../actions";
 /// Comps
 import Header from "./Header";
 import Footer from "./Footer";
+import Landing from "./Landing";
 
 // styles
 import "materialize-css/dist/css/materialize.min.css";
@@ -13,7 +14,6 @@ import "materialize-css/dist/css/materialize.min.css";
 const Dashboard = () => <h2>Dash</h2>;
 const SurveyNew = () => <h2>Survey new</h2>;
 const SurveyList = () => <h2>Survey List</h2>;
-const Landing = () => <h2>Landing</h2>;
 
 // converted from functiuonal Comp to class Comp
 class App extends React.Component {
