@@ -21,6 +21,9 @@ class Header extends React.Component {
               <Payments />
             </li>
             <li>
+              <span>X credits</span>
+            </li>
+            <li>
               <a href="/api/logout">Logout</a>
             </li>
           </>
