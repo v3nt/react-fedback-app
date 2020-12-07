@@ -1,5 +1,5 @@
 import { FETCH_USER } from "../actions/types";
-
+// eslint-disable-next-line
 export default function (state = null, action) {
   // null for first call. ie no idea if user is logged in.
   console.log(action);
