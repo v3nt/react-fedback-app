@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import StripeCheckout from "react-stripe-checkout";
+import { connect } from "react-redux";
+import * as actions from "../actions/";
 
 class Payments extends Component {
   // token is for callback.
@@ -11,7 +13,7 @@ class Payments extends Component {
         name="Three Comma Co." // the pop-in header title
         description="5 for 5 credits. "
         amount={500}
-        token={(token) => console.log(token)}
+        token={(token) => this.props.handleToken(token)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
       >
         <button className="btn">Add 5 credits</button>
@@ -20,4 +22,4 @@ class Payments extends Component {
   }
 }
 
-export default Payments;
+export default connect(null, actions)(Payments);
