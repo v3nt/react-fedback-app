@@ -1,3 +1,5 @@
+//es2015 modules. import and export.
+
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
