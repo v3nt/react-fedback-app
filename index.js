@@ -11,7 +11,11 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 
 const keys = require("./config/keys");
+
+// models
 require("./models/User");
+require("./models/Survey");
+
 require("./services/passport"); // required but ref never used as nothing returned
 
 mongoose = require("mongoose");
