@@ -41,6 +41,7 @@ require("./routes/authRoutes")(app);
 // not needed as using require(...)(app).
 
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 //heroku
 if (process.env.NODE_ENV === "production") {
