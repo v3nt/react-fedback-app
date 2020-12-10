@@ -12,4 +12,4 @@ class Mailer extends helper.Mail {
 
 }
 
-export default Mailer;
+module.exports = Mailer;
