@@ -1,5 +1,6 @@
 module.exports = (req, res, next) => {
-  if (!req.user.credits < 1) {
+  if (req.user.credits < 1) {
+    console.log(req.user);
     return res.status(403).send({ error: "You need more credits." });
   }
   // 402 = payment required.

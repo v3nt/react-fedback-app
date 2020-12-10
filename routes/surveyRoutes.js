@@ -22,6 +22,7 @@ module.exports = (app) => {
 
     // send the Mail with survey Obj.
     const mailer = new Mailer(survey, surveyTemplate(survey));
+    mailer.send(); // how to test before doing all the react stuff. REST client.
   });
 
   //   full js line recipients: recipients.split(",").map((email) => {return { email: email };

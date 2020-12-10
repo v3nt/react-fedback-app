@@ -10,6 +10,19 @@ import reduxThunk from "redux-thunk";
 import App from "./components/App";
 import reducers from "./reducers";
 
+// testing for backend route
+import axios from "axios";
+window.axios = axios;
+
+// for use in console.
+const survey = {
+  title: "mytitle",
+  subject: "my subject",
+  body: "here;s the body!",
+  recipients: "mrdpcrabbe@gmail.com",
+};
+axios.post("/api/surveys", survey);
+
 // () means invoke the function
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
