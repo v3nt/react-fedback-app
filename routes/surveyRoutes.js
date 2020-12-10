@@ -13,9 +13,9 @@ module.exports = (app) => {
       title, // title:title
       subject,
       body,
-      recipients: recipients.split(",").map((email) => {
-        email.trim();
-      }), // es6 refactored
+      recipients: recipients.split(",").map((email) => ({
+        email: email.trim(),
+      })), // es6 refactored
       _user: req.user.id, // id is from mongoose model.
       dateSent: Date.now(),
     });
