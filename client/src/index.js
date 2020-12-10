@@ -11,17 +11,17 @@ import App from "./components/App";
 import reducers from "./reducers";
 
 // testing for backend routes
-// import axios from "axios";
-// window.axios = axios;
+import axios from "axios";
+window.axios = axios;
 
-// // for use in console.
-// const survey = {
-//   title: "mytitle",
-//   subject: "my subject 22222",
-//   body: "here's the body!",
-//   recipients: "mrdpcrabbe@gmail.com",
-// };
-// axios.post("/api/surveys", survey);
+// for use in console.
+const survey = {
+  title: "mytitle",
+  subject: "my subject 22222",
+  body: "here is the body!",
+  recipients: "mrdpcrabbe@gmail.com",
+};
+axios.post("/api/surveys", survey); // so this talks directly to surveyRoutes
 
 // () means invoke the function
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));

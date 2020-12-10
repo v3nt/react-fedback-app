@@ -7,8 +7,9 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = mongoose.model("surveys");
 
 module.exports = (app) => {
-  app.post("/api/surveys", requireLogin, requireCredits, (req, res) => {
+  app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
+
     const survey = new Survey({
       title, // title:title
       subject,
@@ -22,8 +23,15 @@ module.exports = (app) => {
 
     // send the Mail with survey Obj.
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    mailer.send(); // how to test before doing all the react stuff. REST client.
-  });
 
-  //   full js line recipients: recipients.split(",").map((email) => {return { email: email };
+    try {
+      await mailer.send(); // pauses until returns
+      await survey.save();
+      req.user.credits -= 1;
+      const user = await req.user.save();
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err); // 422 = something wrong with the data.
+    }
+  });
 };
