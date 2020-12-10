@@ -6,10 +6,7 @@ const helper = sendgrid.mail;
 const keys = require("../config/keys");
 
 class Mailer extends helper.Mail {
-
-
-    this.from_email = new helper.Email('dan@jynk.net');
-
+  // this.from_email = new helper.Email('dan@jynk.net');
 }
 
 module.exports = Mailer;
