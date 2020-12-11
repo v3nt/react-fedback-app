@@ -9,13 +9,14 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
+import SurveyNew from "./SurveyNew";
 
 // styles
 import "materialize-css/dist/css/materialize.min.css";
 
 // Dummy comps
 
-const SurveyNew = () => <h2>Survey new</h2>;
+// const SurveyNew = () => <h2>Survey new</h2>;
 const SurveyList = () => <h2>Survey List</h2>;
 
 // converted from functiuonal Comp to class Comp
