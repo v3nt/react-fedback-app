@@ -14,14 +14,15 @@ import reducers from "./reducers";
 import axios from "axios";
 window.axios = axios;
 
-// for use in console.
-const survey = {
-  title: "mytitle",
-  subject: "my subject 22222",
-  body: "here is the body!",
-  recipients: "mrdpcrabbe@gmail.com",
-};
-axios.post("/api/surveys", survey); // so this talks directly to surveyRoutes
+// Testing - for use in console.
+// const survey = {
+//   title: "mytitle",
+//   subject: "my subject 22222",
+//   body: "here is the body!",
+//   recipients: "mrdpcrabbe@gmail.com",
+// };
+// axios.post("/api/surveys", survey);
+// so this talks directly to surveyRoutes
 
 // () means invoke the function
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));

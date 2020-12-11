@@ -8,12 +8,13 @@ import * as actions from "../actions";
 import Header from "./Header";
 import Footer from "./Footer";
 import Landing from "./Landing";
+import Dashboard from "./Dashboard";
 
 // styles
 import "materialize-css/dist/css/materialize.min.css";
 
 // Dummy comps
-const Dashboard = () => <h2>Dash</h2>;
+
 const SurveyNew = () => <h2>Survey new</h2>;
 const SurveyList = () => <h2>Survey List</h2>;
 
@@ -30,7 +31,12 @@ class App extends React.Component {
           <div>
             <Header />
             <Route path="/" exact component={Landing} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route
+              path="/dashboard"
+              render={({ props }) => (
+                <Dashboard link_add="/surveys/new" {...props} />
+              )}
+            />
             <Route exact path="/surveys" component={SurveyList} />
             <Route path="/surveys/new" component={SurveyNew} />
           </div>
