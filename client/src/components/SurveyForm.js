@@ -33,8 +33,9 @@ class SurveyForm extends Component {
             Cancel <i className="material-icons right">clear</i>
           </Link>
 
-          <button type="submit" value="Submit" className="btn right">
-            Review <i className="material-icons right">arrow_forward</i>
+          <button type="submit" className="teal btn-flat right white-text">
+            Next
+            <i className="material-icons right">done</i>
           </button>
         </form>
       </div>
@@ -42,6 +43,17 @@ class SurveyForm extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {};
+  console.log("validate", values);
+  if (values.title) {
+    errors.title = "you must provide a title";
+  }
+  return errors;
+}
+
+// wrap the form
 export default reduxForm({
+  validate,
   form: "surveyForm",
 })(SurveyForm);
