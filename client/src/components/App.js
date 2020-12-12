@@ -10,14 +10,12 @@ import Footer from "./Footer";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./SurveyNew";
+import SurveyList from "./SurveyList";
 
 // styles
 import "materialize-css/dist/css/materialize.min.css";
 
 // Dummy comps
-
-// const SurveyNew = () => <h2>Survey new</h2>;
-const SurveyList = () => <h2>Survey List</h2>;
 
 // converted from functiuonal Comp to class Comp
 class App extends React.Component {
@@ -29,9 +27,9 @@ class App extends React.Component {
     return (
       <div>
         <BrowserRouter>
-          <div>
+          <div className="container">
             <Header />
-            <div className="container section">
+            <div className=" section">
               <Route path="/" exact component={Landing} />
               <Route
                 path="/dashboard"

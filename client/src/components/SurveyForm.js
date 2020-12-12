@@ -1,40 +1,25 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
+import { Link } from "react-router-dom";
 
 // reduxForm -s same as connect and used to connect to redux store.
 
 import SurveyField from "./SurveyField";
 
+const FIELDS = [
+  { label: "Title", name: "surveyTitle" },
+  { label: "Subject", name: "surveySubject" },
+  { label: "Body", name: "surveyBody" },
+  { label: "Recipients", name: "surveyRecipients" },
+];
+
 class SurveyForm extends Component {
   renderField() {
-    return (
-      <div>
-        <Field
-          label="title"
-          name="surveyTitle"
-          component={SurveyField}
-          type="text"
-        />
-        <Field
-          label="Subject"
-          name="surveySubject"
-          component={SurveyField}
-          type="text"
-        />
-        <Field
-          label="Body"
-          name="surveyBody"
-          component={SurveyField}
-          type="text"
-        />
-        <Field
-          label="Recipients"
-          name="surveyRecipients"
-          component={SurveyField}
-          type="text"
-        />
-      </div>
-    );
+    return FIELDS.map((el) => {
+      return (
+        <Field key={el.name} {...el} component={SurveyField} type="text" />
+      );
+    });
   }
   render() {
     return (
@@ -44,8 +29,12 @@ class SurveyForm extends Component {
           onSubmit={this.props.handleSubmit((values) => console.log(values))}
         >
           {this.renderField()}
-          <button type="submit" value="Submit">
-            Submit
+          <Link to="/surveys" className="red btn">
+            Cancel <i className="material-icons right">clear</i>
+          </Link>
+
+          <button type="submit" value="Submit" className="btn right">
+            Review <i className="material-icons right">arrow_forward</i>
           </button>
         </form>
       </div>
