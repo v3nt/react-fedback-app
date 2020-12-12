@@ -15,15 +15,31 @@ class SurveyForm extends Component {
           component={SurveyField}
           type="text"
         />
-        <Field name="surveySubject" component={SurveyField} type="text" />
-        <Field name="surveyBody" component={SurveyField} type="text" />
+        <Field
+          label="Subject"
+          name="surveySubject"
+          component={SurveyField}
+          type="text"
+        />
+        <Field
+          label="Body"
+          name="surveyBody"
+          component={SurveyField}
+          type="text"
+        />
+        <Field
+          label="Recipients"
+          name="surveyRecipients"
+          component={SurveyField}
+          type="text"
+        />
       </div>
     );
   }
   render() {
     return (
       <div>
-        <h3>Form 2</h3>
+        <h3 className="header">Form 2</h3>
         <form
           onSubmit={this.props.handleSubmit((values) => console.log(values))}
         >

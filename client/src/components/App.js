@@ -27,21 +27,24 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <BrowserRouter>
           <div>
             <Header />
-            <Route path="/" exact component={Landing} />
-            <Route
-              path="/dashboard"
-              render={({ props }) => (
-                <Dashboard link_add="/surveys/new" {...props} />
-              )}
-            />
-            <Route exact path="/surveys" component={SurveyList} />
-            <Route path="/surveys/new" component={SurveyNew} />
+            <div className="container section">
+              <Route path="/" exact component={Landing} />
+              <Route
+                path="/dashboard"
+                render={({ props }) => (
+                  <Dashboard link_add="/surveys/new" {...props} />
+                )}
+              />
+              <Route exact path="/surveys" component={SurveyList} />
+              <Route path="/surveys/new" component={SurveyNew} />
+            </div>
           </div>
         </BrowserRouter>
+
         <Footer />
       </div>
     );
