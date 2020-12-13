@@ -6,6 +6,8 @@ const SurveyField = ({ input, label, meta }) => {
     <div className="input-fieldOFF">
       <label>{label}</label>
       <input {...input} />
+
+      {meta.touched && meta.error ? meta.error : null}
     </div>
   );
 };

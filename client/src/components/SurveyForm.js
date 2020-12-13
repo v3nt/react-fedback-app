@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 import SurveyField from "./SurveyField";
 
 const FIELDS = [
-  { label: "Title", name: "surveyTitle" },
+  { label: "Title", name: "surveyTitle", noValueError: "Title require" },
   { label: "Subject", name: "surveySubject" },
   { label: "Body", name: "surveyBody" },
-  { label: "Recipients", name: "surveyRecipients" },
+  { label: "Recipients", name: "surveyRecipients", value: "dan@jynk.net" },
 ];
 
 class SurveyForm extends Component {
@@ -29,6 +29,17 @@ class SurveyForm extends Component {
           onSubmit={this.props.handleSubmit((values) => console.log(values))}
         >
           {this.renderField()}
+
+          <div className="file-field input-field">
+            <div className="btn">
+              <span>File</span>
+              <input type="file" />
+            </div>
+            <div className="file-path-wrapper">
+              <input className="file-path validate" type="text" />
+            </div>
+          </div>
+
           <Link to="/surveys" className="red btn">
             Cancel <i className="material-icons right">clear</i>
           </Link>
@@ -46,9 +57,15 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
   console.log("validate", values);
-  if (values.title) {
-    errors.title = "you must provide a title";
-  }
+  // if (values.title) {
+  //   errors.title = "you must provide a title";
+  // }
+
+  FIELDS.map((name, label, noValueError) => {
+    if (!values[name]) {
+      errors[name] = noValueError ? noValueError : `Value needed for ${label}`;
+    }
+  });
   return errors;
 }
 
