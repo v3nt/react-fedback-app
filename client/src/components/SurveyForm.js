@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { reduxForm, Field } from "redux-form"; // reduxForm -ssame as connect and used to connect to redux store.
 import { Link } from "react-router-dom";
-import _ from "lodash";
 
 import validateEmails from "../utils/validateEmails";
 
@@ -53,22 +52,20 @@ const SurveyForm = (props) => {
 
 const validate = (values) => {
   const errors = {};
-  console.log("validate!", values);
   if (!values.title) {
     errors.title = "you must provide a title";
   }
   if (!values.subject) {
     errors.subject = "you must provide a subject";
   }
+  errors.emails = validateEmails(values.emails || "");
 
   FIELDS.map(({ name }) => {
-    console.log("MPA?", name);
     if (!values[name]) {
       errors[name] = `Value needed for ${name}`;
     }
+    return errors;
   });
-
-  errors.emails = validateEmails(values.emails || "");
 
   return errors;
 };
