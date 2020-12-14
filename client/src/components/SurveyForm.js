@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field } from "redux-form"; // reduxForm -ssame as connect and used to connect to redux store.
 import { Link } from "react-router-dom";
-
-// reduxForm -s same as connect and used to connect to redux store.
+import validateEmails from "../utils/validateEmails";
 
 import SurveyField from "./SurveyField";
 
