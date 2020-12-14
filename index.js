@@ -15,14 +15,12 @@ const keys = require("./config/keys");
 // models
 require("./models/User");
 require("./models/Survey");
-
 require("./services/passport"); // required but ref never used as nothing returned
 
 mongoose = require("mongoose");
 mongoose.connect(keys.mongoURI);
 
 const app = express();
-
 app.use(bodyParser.json());
 
 // tell express to use cookies in our app, D * H * M * S * MS
