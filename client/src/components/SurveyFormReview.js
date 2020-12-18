@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 
-class SurveyForm extends Component {
-  render() {
-    return <div>Form 2</div>;
-  }
-}
+const SurveyForm = () => {
+  return (
+    <div>
+      <h5>Please confirm your entries</h5>
+    </div>
+  );
+};
 
 export default SurveyForm;

@@ -21,10 +21,13 @@ const renderField = () => {
 
 const SurveyForm = (props) => {
   const { handleSubmit } = props;
+  // const [showFormReview, setShowFormReview] = useState(false);
+  //
+
   return (
     <div>
       <h3 className="header">Form 2</h3>
-      <form onSubmit={handleSubmit((values) => console.log(values))}>
+      <form onSubmit={handleSubmit(props.onSurveySubmit)}>
         {renderField()}
 
         <div className="file-field input-field">
