@@ -6,15 +6,10 @@ import validateEmails from "../utils/validateEmails";
 
 import SurveyField from "./SurveyField";
 
-const FIELDS = [
-  { label: "Title", name: "title", noValueError: "Title require" },
-  { label: "Subject", name: "subject" },
-  { label: "Body", name: "surveyBody" },
-  { label: "Recipients", name: "emails", value: "dan@jynk.net" },
-];
+import formFields from "./formFields";
 
 const renderField = () => {
-  return FIELDS.map((el) => {
+  return formFields.map((el) => {
     return <Field key={el.name} {...el} component={SurveyField} type="text" />;
   });
 };
@@ -61,7 +56,7 @@ const validate = (values) => {
   }
   errors.emails = validateEmails(values.emails || "");
 
-  FIELDS.map(({ name }) => {
+  formFields.map(({ name }) => {
     if (!values[name]) {
       errors[name] = `Value needed for ${name}`;
     }
