@@ -21,8 +21,6 @@ const renderField = () => {
 
 const SurveyForm = (props) => {
   const { handleSubmit } = props;
-  // const [showFormReview, setShowFormReview] = useState(false);
-  //
 
   return (
     <div>
@@ -46,7 +44,7 @@ const SurveyForm = (props) => {
 
         <button type="submit" className="teal btn-flat right white-text">
           Next
-          <i className="material-icons right">done</i>
+          <i className="material-icons right">forward</i>
         </button>
       </form>
     </div>
@@ -77,4 +75,5 @@ const validate = (values) => {
 export default reduxForm({
   validate,
   form: "surveyForm",
+  destroyOnUnmount: false,
 })(SurveyForm);
