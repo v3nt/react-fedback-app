@@ -7,7 +7,7 @@ const Dashboard = (props) => {
       <h2>Dashboad</h2>
       <div className="fixed-action-btn">
         <Link to={props.link_add} className="btn-floating btn-large red">
-          <i class="large material-icons">add</i>
+          <i className="large material-icons">add</i>
         </Link>
       </div>
     </div>

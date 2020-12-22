@@ -18,7 +18,10 @@ require("./models/Survey");
 require("./services/passport"); // required but ref never used as nothing returned
 
 mongoose = require("mongoose");
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const app = express();
 app.use(bodyParser.json());

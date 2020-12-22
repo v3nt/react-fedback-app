@@ -8,9 +8,9 @@ class SurveyList extends Component {
         <h2 className="header">Surveys</h2>
         <Link
           to="/surveys/new"
-          class="btn-floating btn-large waves-effect waves-light red"
+          className="btn-floating btn-large waves-effect waves-light red"
         >
-          <i class="material-icons">add</i>
+          <i className="material-icons">add</i>
         </Link>
       </div>
     );
