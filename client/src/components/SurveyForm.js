@@ -54,7 +54,7 @@ const validate = (values) => {
   if (!values.subject) {
     errors.subject = "you must provide a subject";
   }
-  errors.emails = validateEmails(values.emails || "");
+  errors.recipients = validateEmails(values.recipients || "");
 
   formFields.map(({ name }) => {
     if (!values[name]) {

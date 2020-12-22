@@ -20,6 +20,10 @@ export const handleToken = (token) => async (dispatch) => {
   });
 };
 
+export const submitSurvey = (values) => {
+  return { type: "submit_survey" };
+};
+
 // super refactor
 // export const fetchUser = () => async (dispatch) =>
 //   dispatch({

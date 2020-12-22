@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 
 import fromFields from "./formFields";
 
-const SurveyForm = ({ onCancel, formValues }) => {
+import * as actions from "../actions/";
+
+const SurveyForm = ({ onCancel, formValues, submitSurvey }) => {
   const reviewFields = fromFields.map(({ name, label }) => {
     return (
       <li key={name}>
@@ -19,11 +21,17 @@ const SurveyForm = ({ onCancel, formValues }) => {
       <div>
         <ul>{reviewFields}</ul>
       </div>
-      <button className="yellow darken-3 btn-flat" onClick={onCancel}>
+      <button
+        className="yellow darken-3 white-text btn-flat"
+        onClick={onCancel}
+      >
         Cancel
       </button>
-      <button className="yellow darken-3 btn-flat" onClick={onCancel}>
-        Confirm & send
+      <button
+        className="green btn-flat white-text right"
+        onClick={() => submitSurvey(formValues)}
+      >
+        Send Survey <i className="material-icons right">email</i>
       </button>
     </div>
   );
@@ -34,4 +42,4 @@ function mapsStateToProps(state) {
   return { formValues: state.form.surveyForm.values };
 }
 
-export default connect(mapsStateToProps)(SurveyForm);
+export default connect(mapsStateToProps, actions)(SurveyForm);
