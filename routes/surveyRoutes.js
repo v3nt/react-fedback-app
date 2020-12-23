@@ -11,13 +11,15 @@ const { URL } = require("url");
 const Survey = mongoose.model("surveys");
 
 module.exports = (app) => {
-  app.get("/api/surveys/thanks", (req, res) => {
+  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
     res.send("thanks for voting");
   });
   //
   app.post("/api/surveys/webhooks", (req, res) => {
-    // initial code.
     const p = new Path("/api/surveys/:surveyId/:choice");
+
+    // initial code.
+
     // const events = _.map(req.body, ({ email, url }) => {
     //   const match = p.test(new URL(url).pathname); // can't deconstruct this as may return null.
     //   if (match) {
@@ -54,6 +56,7 @@ module.exports = (app) => {
           {
             $inc: { [choice]: 1 },
             $set: { "recipients.$.responded": true },
+            lastResponded: new Date(),
           }
         ).exec();
         // exec() needed!
