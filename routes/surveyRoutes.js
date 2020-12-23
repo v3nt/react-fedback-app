@@ -16,22 +16,35 @@ module.exports = (app) => {
   });
   //
   app.post("/api/surveys/webhooks", (req, res) => {
-    // console.log(req.body);
-    const events = _.map(req.body, ({ email, url }) => {
-      const pathname = new URL(url).pathname;
-      const p = new Path("/api/surveys/:surveyId/:choice");
-      console.log(p.test(pathname));
-      const match = p.test(pathname); // can't deconstruct this as may return null.
-      if (match) {
-        return { email: email, surveyId: match.surveyId, choice: match.choice };
-      }
-    });
+    // initial code.
+    const p = new Path("/api/surveys/:surveyId/:choice");
+    // const events = _.map(req.body, ({ email, url }) => {
+    //   const match = p.test(new URL(url).pathname); // can't deconstruct this as may return null.
+    //   if (match) {
+    //     return { email: email, surveyId: match.surveyId, choice: match.choice };
+    //   }
+    // });
+
+    // const compactEvents = _.compact(events);
+    // const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId");
+
+    // With the _.chain function from lodash
+    const events = _.chain(req.body)
+      .map(({ email, url }) => {
+        const match = p.test(new URL(url).pathname); // can't deconstruct this as may return null.
+        if (match) {
+          return {
+            email: email,
+            surveyId: match.surveyId,
+            choice: match.choice,
+          };
+        }
+      })
+      .compact()
+      .uniqBy("email", "surveyId")
+      .value();
+
     console.log(events);
-
-    const compactEvents = _.compact(events);
-    const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId");
-
-    console.log(uniqueEvents);
 
     res.send({});
   });
