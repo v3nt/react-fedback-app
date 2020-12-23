@@ -28,8 +28,8 @@ module.exports = (app) => {
     // const compactEvents = _.compact(events);
     // const uniqueEvents = _.uniqBy(compactEvents, "email", "surveyId");
 
-    // With the _.chain function from lodash
-    const events = _.chain(req.body)
+    // Refactor with the _.chain function from lodash
+    _.chain(req.body)
       .map(({ email, url }) => {
         const match = p.test(new URL(url).pathname); // can't deconstruct this as may return null.
         if (match) {
@@ -42,9 +42,23 @@ module.exports = (app) => {
       })
       .compact()
       .uniqBy("email", "surveyId")
+      .each(({ surveyId, email, choice }) => {
+        // this is async but we don't need to respond to so no await needed. `Survey` is fromt he mongoose model
+        Survey.updateOne(
+          {
+            _id: surveyId,
+            recipients: {
+              $elemMatch: { email: email, responded: false },
+            },
+          },
+          {
+            $inc: { [choice]: 1 },
+            $set: { "recipients.$.responded": true },
+          }
+        ).exec();
+        // exec() needed!
+      })
       .value();
-
-    console.log(events);
 
     res.send({});
   });

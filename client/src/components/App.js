@@ -49,21 +49,4 @@ class App extends React.Component {
   }
 }
 
-// const App = () => {
-//   return (
-//     <div className="container">
-//       <BrowserRouter>
-//         <div>
-//           <Header />
-//           <Route path="/" exact component={Landing} />
-//           <Route path="/dashboard" component={Dashboard} />
-//           <Route exact path="/surveys" component={SurveyList} />
-//           <Route path="/surveys/new" component={SurveyNew} />
-//         </div>
-//       </BrowserRouter>
-//       <Footer />
-//     </div>
-//   );
-// };
-
 export default connect(null, actions)(App);
