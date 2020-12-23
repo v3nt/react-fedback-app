@@ -66,6 +66,24 @@ module.exports = (app) => {
     res.send({});
   });
   //
+  app.get("/api/surveys", requireLogin, async (req, res) => {
+    const surveys = await Survey.find(
+      { _user: req.user.id },
+      {
+        _id: 1,
+        title: 1,
+        subject: 1,
+        body: 1,
+        dateSent: 1,
+        lastResponded: 1,
+        yes: 1,
+        no: 1,
+      }
+    ).sort([["dateSent", -1]]);
+    // but we don't need ALL the recipients as it will add load so specify what you want to pull out
+    res.send(surveys);
+  });
+  //
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
 
