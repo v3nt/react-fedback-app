@@ -37,7 +37,11 @@ class App extends React.Component {
                   <Dashboard link_add="/surveys/new" {...props} />
                 )}
               />
-              <Route exact path="/surveys" component={SurveyList} />
+              <Route
+                exact
+                path="/surveys"
+                render={({ props }) => <SurveyList {...props} />}
+              />
               <Route path="/surveys/new" component={SurveyNew} />
             </div>
           </div>
